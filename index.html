@@ -70,39 +70,29 @@
 const questions = [
   ["Tens a certeza? 🥺", "Diz a sério..."],
   ["Tens mesmo a certeza?! 😭", "Vou ficar triste."],
-  ["Odeias-me? 💔", "VOU FAZER BIRRA!"],
+  ["Odeias me? 💔", "VOU FAZER BIRRA!"],
   ["Tenho de chamar a polícia?! 🚨", "Ainda estou a fazer birra."],
   ["Okay... Última oportunidade? 🥹", "VÁ LAAA?"],
-  ["Última oportunidade a sério! 🥹", "VÁ LAAAAAAAAAAAAA?"]
-];
+  ["Okay... Última oportunidade a sério! 🥹", "VÁ LAAAAAAAAAAAAA?"],
+],
 
 let count = 0;
 
 function sayNo() {
   const q = questions[Math.min(count, questions.length - 1)];
-
   document.getElementById("title").textContent = q[0];
   document.getElementById("message").textContent = q[1];
-
   document.getElementById("heart").textContent =
-    ["🥺", "😭", "💔", "🚨", "🥹", "💗"][Math.min(count, 5)];
-
+    ["🥺", "😭", "💔", "😔", "🚨", "🥹"][Math.min(count, 5)];
   document.getElementById("hint").textContent =
-    "Já carregaste " + (count + 1) + " vezes 😂";
-
+    "Attempt number " + (count + 1) + " 😂";
   count++;
 
-  const yesButton = document.getElementById("yes");
-  yesButton.style.transform =
-    "scale(" + (1 + Math.min(count, 7) * 0.12) + ")";
-
-  const noLabels = [
-    "Não!", "Tenho!", "ODEIO 😭",
-    "CHAMA!", "Já decidi!", "NUNCA!"
-  ];
-
+  const yes = document.getElementById("yes");
+  yes.style.transform = "scale(" + (1 + Math.min(count, 7) * 0.12) + ")";
   document.getElementById("no").textContent =
-    noLabels[Math.min(count - 1, noLabels.length - 1)];
+    ["Não gosto", "Tenho", "ODEIO 😭", "CHAMA!", "🥺 Já decidi", "Tenho a certeza"]
+    [Math.min(count - 1, 5)];
 }
 
 function sayYes() {
@@ -110,24 +100,17 @@ function sayYes() {
   document.getElementById("title").textContent = "YAAAAAY! ❤️";
   document.getElementById("message").textContent =
     "YEEEEEEEEEE! És a minha pessoa favorita. Mal posso esperar pela nossa sleepover no fim de semana. 💖😘";
-
   document.getElementById("buttons").innerHTML = "";
-
   document.getElementById("hint").textContent =
-    "Amo-te muitooooooo! ❤️💕💗";
-
+    "Amo te muitooooooo! ❤️💕💗";
   for (let i = 0; i < 45; i++) {
     setTimeout(() => {
       const h = document.createElement("span");
       h.className = "float";
-      h.textContent = ["❤️", "💖", "💕", "💗", "😘"][
-        Math.floor(Math.random() * 5)
-      ];
-
+      h.textContent = ["❤️", "💖", "💕", "💗", "😘"][Math.floor(Math.random()*5)];
       h.style.left = Math.random() * 100 + "vw";
       h.style.animationDuration = (2 + Math.random() * 3) + "s";
       h.style.fontSize = (18 + Math.random() * 20) + "px";
-
       document.body.appendChild(h);
       setTimeout(() => h.remove(), 5500);
     }, i * 70);
