@@ -71,9 +71,10 @@ const questions = [
   ["Tens a certeza? 🥺", "Diz a sério..."],
   ["Tens mesmo a certeza?! 😭", "Vou ficar triste."],
   ["Odeias me? 💔", "VOU FAZER BIRRA!"],
-  ["Vou chamar a polícia?! 🚨", "Ainda estou a fazer birra."],
-  ["Okay... Última oportunidade? 🥹", "VÁ LAAAAAAAA?"]
-];
+  ["Tenho de chamar a polícia?! 🚨", "Ainda estou a fazer birra."],
+  ["Okay... Última oportunidade? 🥹", "VÁ LAAA?"] 
+  ["Okay... Última oportunidade a sério! 🥹", "VÁ LAAAAAAAAAAAAA?"]
+
 
 let count = 0;
 
@@ -90,7 +91,7 @@ function sayNo() {
   const yes = document.getElementById("yes");
   yes.style.transform = "scale(" + (1 + Math.min(count, 7) * 0.12) + ")";
   document.getElementById("no").textContent =
-    ["Tenho", "Tenho", "ODEIO 😭", "CHAMA!", "🥺 por favorrr", "Tenho a certeza"]
+    ["Não gosto", "Tenho", "ODEIO 😭", "CHAMA!", "🥺 Já decidi", "Tenho a certeza"]
     [Math.min(count - 1, 5)];
 }
 
@@ -101,7 +102,7 @@ function sayYes() {
     "YEEEEEEEEEE! És a minha pessoa favorita. Mal posso esperar pela nossa sleepover no fim de semana. 💖😘";
   document.getElementById("buttons").innerHTML = "";
   document.getElementById("hint").textContent =
-    "I love you! ❤️💕💗";
+    "Amo te muitooooooo! ❤️💕💗";
   for (let i = 0; i < 45; i++) {
     setTimeout(() => {
       const h = document.createElement("span");
