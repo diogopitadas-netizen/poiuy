@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Little Question ❤️</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffe0eb, #fff0f5, #ffd6e7);
+    color: #76344c;
+    text-align: center;
+    overflow: hidden;
+  }
+  .card {
+    width: min(90%, 430px);
+    padding: 35px 22px;
+    background: rgba(255,255,255,.85);
+    border-radius: 28px;
+    box-shadow: 0 12px 40px #d77b9930;
+  }
+  .heart { font-size: 60px; animation: beat 1s infinite; }
+  h1 { font-size: 29px; }
+  p { font-size: 17px; line-height: 1.5; }
+  button {
+    border: 0;
+    border-radius: 14px;
+    padding: 13px 25px;
+    margin: 8px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: transform .2s;
+  }
+  button:active { transform: scale(.95); }
+  #yes { background: #ff5c93; color: white; }
+  #no { background: #eee; color: #555; }
+  .small { font-size: 13px; opacity: .7; }
+  @keyframes beat {
+    50% { transform: scale(1.15); }
+  }
+  .float {
+    position: fixed;
+    top: -30px;
+    animation: fall linear forwards;
+    pointer-events: none;
+  }
+  @keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="heart" id="heart">💗</div>
+  <h1 id="title">Will you be my Valentine? 💖</h1>
+  <p id="message">I have a very important question for you...</p>
+  <div id="buttons">
+    <button id="yes" onclick="sayYes()">YES ❤️</button>
+    <button id="no" onclick="sayNo()">No 💔</button>
+  </div>
+  <p class="small" id="hint">Choose wisely... 👀</p>
+</div>
+
+<script>
+const questions = [
+  ["Are you sure? 🥺", "Please think about it..."],
+  ["Are you REALLY sure?! 😭", "You're breaking my heart here."],
+  ["Do you hate me? 💔", "I thought we had something special!"],
+  ["AFTER EVERYTHING?! 😔", "I'm literally just a boy in love."],
+  ["I'm calling the love police 🚨", "This is a serious case of heartbreak."],
+  ["Okay... one last chance? 🥹", "Pretty please with a cherry on top?"]
+];
+
+let count = 0;
+
+function sayNo() {
+  const q = questions[Math.min(count, questions.length - 1)];
+  document.getElementById("title").textContent = q[0];
+  document.getElementById("message").textContent = q[1];
+  document.getElementById("heart").textContent =
+    ["🥺", "😭", "💔", "😔", "🚨", "🥹"][Math.min(count, 5)];
+  document.getElementById("hint").textContent =
+    "Attempt number " + (count + 1) + " 😂";
+  count++;
+
+  const yes = document.getElementById("yes");
+  yes.style.transform = "scale(" + (1 + Math.min(count, 7) * 0.12) + ")";
+  document.getElementById("no").textContent =
+    ["Are you sure?", "Really?", "Nooo 😭", "Think again!", "🥺 please", "Last chance?"]
+    [Math.min(count - 1, 5)];
+}
+
+function sayYes() {
+  document.getElementById("heart").textContent = "🥰";
+  document.getElementById("title").textContent = "YAAAAAY! ❤️";
+  document.getElementById("message").textContent =
+    "I knew you'd say yes! You're my favourite person. I can't wait to spend this special day with you. 💖😘";
+  document.getElementById("buttons").innerHTML = "";
+  document.getElementById("hint").textContent =
+    "I love you! ❤️💕💗";
+  for (let i = 0; i < 45; i++) {
+    setTimeout(() => {
+      const h = document.createElement("span");
+      h.className = "float";
+      h.textContent = ["❤️", "💖", "💕", "💗", "😘"][Math.floor(Math.random()*5)];
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.animationDuration = (2 + Math.random() * 3) + "s";
+      h.style.fontSize = (18 + Math.random() * 20) + "px";
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 5500);
+    }, i * 70);
+  }
+}
+</script>
+</body>
+</html>
