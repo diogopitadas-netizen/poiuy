@@ -58,9 +58,9 @@
 <div class="card">
   <div class="heart" id="heart">💗</div>
   <h1 id="title">Olá amoreco, gostas de mim? 💖</h1>
-  <p id="message">Tenho uma pergunta muito importante...</p>
+  <p id="message">Pensa bem...</p>
   <div id="buttons">
-    <button id="yes" onclick="sayYes()">SIM ❤️</button>
+    <button id="yes" onclick="sayYes()">Gosto de ti ❤️</button>
     <button id="no" onclick="sayNo()">NÃO 💔</button>
   </div>
   <p class="small" id="hint">Escolhe bem... 👀</p>
@@ -68,7 +68,7 @@
 
 <script>
 const questions = [
-  ["Tens a certeza? 🥺", "Vá laaaaa..."],
+  ["Tens a certeza? 🥺", "Diz a sério..."],
   ["Tens mesmo a certeza?! 😭", "Vou ficar triste."],
   ["Odeias me? 💔", "VOU FAZER BIRRA!"],
   ["Vou chamar a polícia?! 🚨", "Ainda estou a fazer birra."],
@@ -90,7 +90,7 @@ function sayNo() {
   const yes = document.getElementById("yes");
   yes.style.transform = "scale(" + (1 + Math.min(count, 7) * 0.12) + ")";
   document.getElementById("no").textContent =
-    ["Tens a certeza?", "Tens mesmo a certeza?", "Nãooooo 😭", "Mais uma oportunidade!", "🥺 por favorrr", "Última oportunidade?"]
+    ["Tenho", "Tenho", "Nãooooo 😭", "Chama!", "🥺 por favorrr", "Tenho a certeza"]
     [Math.min(count - 1, 5)];
 }
 
